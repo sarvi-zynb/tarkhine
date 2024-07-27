@@ -1,0 +1,27 @@
+.TFContainer {
+  height: 50px;
+  width: 300px;
+  direction: ltr !important;
+}
+
+.character {
+  line-height: 50px;
+  font-size: 36px;
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(128, 128, 128, 0.7);
+  border-radius: 9px;
+  margin-left: 9px;
+}
+
+.character:first-child {
+  margin-left: 0;
+}
+
+.character--inactive {
+  background-color: rgba(255, 255, 255, 0);
+  border: 1px solid rgba(128, 128, 128, 0.3);
+}
+
+.character--selected {
+  border: 1px solid rgba(128, 128, 128, 0.5);
+}
