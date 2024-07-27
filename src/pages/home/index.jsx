@@ -1,35 +1,57 @@
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import About from "../../components/HomePage/about";
+import Modal from "../../components/modal";
 import Branches from "../../components/HomePage/branches";
 import Slider from "../../components/slider";
-
-import Modal from "../../components/modal";
-import { Link, useNavigate } from "react-router-dom";
 import Searchbox from "../../components/searchbox";
+import sliderImage from '../../assets/image/home/Slider.png'
+import menu1 from '../../assets/image/home/menu-image1.png'
+import menu2 from '../../assets/image/home/menu-image2.png'
+import menu3 from '../../assets/image/home/menu-image3.png'
+import menu4 from '../../assets/image/home/menu-image4.png'
+import branchSmall1 from "../../assets/image/Branch-small-image.png";
+import branchSmall2 from "../../assets/image/Branch-small-image2.png";
+import branchSmall3 from "../../assets/image/Branch-small-image3.png";
+import branchSmall4 from "../../assets/image/Branch-small-image4.png";
+import branchSmall5 from "../../assets/image/Branch-small-image5.png";
+import branchSmall6 from "../../assets/image/Branch-small-image6.png";
+import modalBg1 from "../../assets/image/modalBG.png";
+import modalBg2 from "../../assets/image/modalBG2.png";
+import modalBg3 from "../../assets/image/modalBG3.png";
+import modalBg4 from "../../assets/image/modalBG4.png";
+import modalBg5 from "../../assets/image/modalBG5.png";
+import modalBg6 from "../../assets/image/modalBG6.png";
+
+import branchModal1 from "../../assets/image/home/branch-modal.png";
+import branchModal2 from "../../assets/image/home/branch-modal2.png";
+import branchModal3 from "../../assets/image/home/branch-modal3.png";
+import branchModal4 from "../../assets/image/home/branch-modal4.png";
+
 
 const cards = [
   {
     id: 1,
-    img: "http://localhost:5173/src/assets/image/branch-modal.png",
+    img: branchModal1,
     title: "شعبه اکباتان",
     address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
   },
   {
     id: 2,
-    img: "http://localhost:5173/src/assets/image/branch-modal2.png",
+    img: branchModal2,
     title: "شعبه چالوس",
     address:
       "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
   },
   {
     id: 3,
-    img: "http://localhost:5173/src/assets/image/branch-modal3.png",
+    img: branchModal3,
     title: "شعبه اقدسیه",
     address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
   },
   {
     id: 4,
-    img: "http://localhost:5173/src/assets/image/branch-modal4.png",
+    img: branchModal4,
     title: "شعبه ونک",
     address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
   },
@@ -38,68 +60,68 @@ const cards = [
 const picture = [
   {
     id: 1,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image.png",
+    img: branchSmall1,
   },
   {
     id: 2,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image2.png",
+    img: branchSmall2,
   },
   {
     id: 3,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image3.png",
+    img: branchSmall3,
   },
   {
     id: 4,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image4.png",
+    img: branchSmall4,
   },
   {
     id: 5,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image5.png",
+    img: branchSmall5,
   },
   {
     id: 6,
-    img: "http://localhost:5173/src/assets/image/Branch-small-image6.png",
+    img: branchSmall6,
   },
 ];
 
 const bgPicture = [
-  { id: 1, img: "http://localhost:5173/src/assets/image/modalBG.png" },
-  { id: 2, img: "http://localhost:5173/src/assets/image/modalBG2.png" },
-  { id: 3, img: "http://localhost:5173/src/assets/image/modalBG3.png" },
-  { id: 4, img: "http://localhost:5173/src/assets/image/modalBG4.png" },
-  { id: 5, img: "http://localhost:5173/src/assets/image/modalBG5.png" },
-  { id: 6, img: "http://localhost:5173/src/assets/image/modalBG6.png" },
+  { id: 1, img: modalBg1 },
+  { id: 2, img: modalBg2 },
+  { id: 3, img: modalBg3 },
+  { id: 4, img: modalBg4 },
+  { id: 5, img: modalBg5 },
+  { id: 6, img: modalBg6 },
 ];
 
 const sliderImages = [
   {
     id: 1,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 1",
   },
   {
     id: 2,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 2",
   },
   {
     id: 3,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 3",
   },
   {
     id: 4,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 4",
   },
   {
     id: 5,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 5",
   },
   {
     id: 6,
-    imgUrl: "http://localhost:5173/src/assets/image/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 6",
   },
 ];
@@ -107,25 +129,25 @@ const sliderImages = [
 const menus = [
   {
     id: 1,
-    imgUrl: "http://localhost:5173/src/assets/image/menu-image.png",
+    imgUrl: menu1,
     alt: "menu 1",
     btn: "غذای اصلی",
   },
   {
     id: 2,
-    imgUrl: "http://localhost:5173/src/assets/image/menu-image2.png",
+    imgUrl: menu2,
     alt: "menu 2",
     btn: " پیش غذا",
   },
   {
     id: 3,
-    imgUrl: "http://localhost:5173/src/assets/image/menu-image3.png",
+    imgUrl: menu3,
     alt: "menu 3",
     btn: "دسر",
   },
   {
     id: 4,
-    imgUrl: "http://localhost:5173/src/assets/image/menu-image4.png",
+    imgUrl: menu4,
     alt: "menu 4",
     btn: "نوشیدنی",
   },
@@ -140,19 +162,6 @@ const HomePage = () => {
   const modals = useRef(null);
 
   const navigate = useNavigate()
-
-  // useEffect(() => {
-  //   document.addEventListener("mousedown", closeOpenModals);
-  // }, [showBranchModal]);
-
-  // const closeOpenModals = (e) => {
-  //   if (
-  //     (showBranchModal) &&
-  //     !modals.current?.contains(e.target)
-  //   ) {
-  //     setShowBranchModal(false);
-  //   }
-  // };
 
   const handleOpenBranchModal = () => {
     setShowBranchModal(true);

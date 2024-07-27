@@ -1,6 +1,6 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import rectangle from "../../assets/image/Rectangle.png";
-import rectangleSmall from "../../assets/image/RectangleSmall.png";
+import rectangle from "../../assets/image/common/Rectangle.png";
+import rectangleSmall from "../../assets/image/common/RectangleSmall.png";
 
 import {
   Navigation,

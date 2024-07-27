@@ -1,48 +1,48 @@
 import { useEffect, useState } from "react";
-import { Await, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Slider from "../../components/slider";
 import Searchbox from "../../components/searchbox";
 import IconButton from "../../components/buttons/IconButton";
 import Card from "../../components/MenuPage/card";
 import { ToastContainer } from "react-toastify";
+import sliderImage from '../../assets/image/menu/Slider.png'
 
 
 const sliderImages = [
   {
     id: 1,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 1",
   },
   {
     id: 2,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 2",
   },
   {
     id: 3,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 3",
   },
   {
     id: 4,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 4",
   },
   {
     id: 5,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 5",
   },
   {
     id: 6,
-    imgUrl: "http://localhost:5173/src/assets/image/menu/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 6",
   },
 ];
 
 const Menu = () => {
-  const [foods, setFoods] = useState([]);
   const [menuIrani, setMenuIrani] = useState([]);
   const [menuGheyrIrani, setMenuGheyrIrani] = useState([]);
   const [menuPizza, setMenuPizza] = useState([]);
@@ -52,7 +52,6 @@ const Menu = () => {
     axios
       .get("http://localhost:8001/foods")
       .then((result) => {
-        setFoods(result.data);
         result.data.map((item) => {
           if (item.id < 13) {
             setMenuIrani((prev) => [...prev, item]);

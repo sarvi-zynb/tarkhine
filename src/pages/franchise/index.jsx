@@ -1,5 +1,6 @@
 import rectangle from "../../assets/image/franchise/Rectangle 3.png";
 import Button from "../../components/buttons/Button";
+import sliderImage from '../../assets/image/franchise/Slider.png'
 const icons = [
   { icon: "bank", caption: "بیش از 20 شعبه فعال در سراسر کشور" },
   {
@@ -14,7 +15,7 @@ const Franchise = () => {
     <>
       <div className='relative'>
         <img
-          src={"http://localhost:5173/src/assets/image/franchise/Slider.png"}
+          src={sliderImage}
           className='w-full'
         />
         <p className='absolute inset-0 flex items-center justify-center font-bold text-xs md:text-xl lg:text-[40px] text-[#E5F2E9]'>

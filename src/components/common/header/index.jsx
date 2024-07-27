@@ -1,8 +1,8 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useEffect, useRef, useState } from "react";
-import logo from "../../../assets/image/Logo.png";
-import logoMenu from "../../../assets/image/LogoMenu.png";
-import topFrame from "../../../assets/image/topFrame.png";
+import logo from "../../../assets/image/common/Logo.png";
+import logoMenu from "../../../assets/image/common/LogoMenu.png";
+import topFrame from "../../../assets/image/common/topFrame.png";
 import Modal from "../../../components/modal";
 import Searchbox from "../../searchbox";
 import Button from "../../buttons/Button";
@@ -33,13 +33,13 @@ const hamburgerMenu = [
     id: 4,
     title: "درباره ما",
     icon: "users",
-    url: "/about-us",
+    url: "/about",
   },
   {
     id: 5,
     title: "تماس با ما",
     icon: "phone-ringing",
-    url: "/contact-us",
+    url: "/contact",
   },
 ];
 const Header = () => {
@@ -334,16 +334,16 @@ const Header = () => {
           </li>
           <li
             className={
-              path.pathname == "/about-us"
+              path.pathname == "/about"
                 ? "group text-[#417F56] font-bold"
                 : "group text-[#717171] hover:text-[#417F56] hover:font-bold"
             }
           >
-            <Link to={"/about-us"}>
+            <Link to={"/about"}>
               درباره ما
               <span
                 className={
-                  path.pathname == "/about-us"
+                  path.pathname == "/about"
                     ? "block max-w-full h-0.5 bg-[#417F56]"
                     : "block max-w-0 group-hover:max-w-full transition-all duration-400 h-0.5 bg-[#417F56]"
                 }
@@ -352,16 +352,16 @@ const Header = () => {
           </li>
           <li
             className={
-              path.pathname == "/contact-us"
+              path.pathname == "/contact"
                 ? "group text-[#417F56] font-bold"
                 : "group text-[#717171] hover:text-[#417F56] hover:font-bold"
             }
           >
-            <Link to={"/contact-us"}>
+            <Link to={"/contact"}>
               تماس با ما
               <span
                 className={
-                  path.pathname == "/contact-us"
+                  path.pathname == "/contact"
                     ? "block max-w-full h-0.5 bg-[#417F56]"
                     : "block max-w-0 group-hover:max-w-full transition-all duration-400 h-0.5 bg-[#417F56]"
                 }

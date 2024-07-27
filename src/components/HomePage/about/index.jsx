@@ -1,4 +1,4 @@
-import aboutBg from "../../../assets/image/about.png";
+import aboutBg from "../../../assets/image/home/about.png";
 import Button from "../../buttons/Button";
 
 const About = ({ openModal }) => {

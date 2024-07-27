@@ -1,28 +1,30 @@
 import Button from "../../buttons/Button";
+import branch1 from "../../../assets/image/home/branch1.png";
+import branch2 from "../../../assets/image/home/branch2.png";
 
 const cards = [
   {
     id: 1,
-    img: "http://localhost:5173/src/assets/image/branch1.png",
+    img: branch1,
     title: "شعبه اکباتان",
     address: "شهرک اکباتان، فاز ۳، مجتمع تجاری کوروش، طبقه سوم",
   },
   {
     id: 2,
-    img: "http://localhost:5173/src/assets/image/branch2.png",
+    img: branch2,
     title: "شعبه چالوس",
     address:
       "چالوس، خیابان ۱۷ شهریور، بعد کوچه کوروش، جنب داروخانه دکتر میلانی",
   },
   {
     id: 3,
-    img: "http://localhost:5173/src/assets/image/branch1.png",
+    img: branch1,
     title: "شعبه اقدسیه",
     address: "خیابان اقدسیه ، نرسیده به میدان خیام، پلاک ۸",
   },
   {
     id: 4,
-    img: "http://localhost:5173/src/assets/image/branch2.png",
+    img: branch2,
     title: "شعبه ونک",
     address: "میدان ونک، خیابان فردوسی، نبش کوچه نیلوفر، پلاک ۲۶",
   },

@@ -1,11 +1,12 @@
 import aboutUS from "../../assets/image/aboutUS/aboutUS.png";
+import sliderImage from '../../assets/image/aboutUS/Slider.png'
 
 const AboutUS = () => {
   return (
     <>
       <div className='relative'>
         <img
-          src={"http://localhost:5173/src/assets/image/aboutUS/Slider.png"}
+          src={sliderImage}
           className='w-full'
         />
         <p className='absolute inset-0 flex items-center justify-center font-bold text-[40px] text-xs md:text-xl lg:text-[40px] text-[#E5F2E9]'>

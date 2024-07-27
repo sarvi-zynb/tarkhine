@@ -1,4 +1,4 @@
-import footer from "../../../assets/image/Footer.png";
+import footer from "../../../assets/image/common/Footer.png";
 import Button from "../../buttons/Button";
 
 const Footer = () => {

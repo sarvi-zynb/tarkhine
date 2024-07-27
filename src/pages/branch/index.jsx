@@ -5,36 +5,38 @@ import Slider from "../../components/slider";
 import star_rate from "../../assets/icons/Star-rate.png";
 import IconButton from "../../components/buttons/IconButton";
 import { ToastContainer } from "react-toastify";
+import sliderImage from "../../assets/image/branch/Slider.png";
+import sliderImage2 from "../../assets/image/branch/slider2.png";
 
 const sliderImages = [
   {
     id: 1,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 1",
   },
   {
     id: 2,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 2",
   },
   {
     id: 3,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 3",
   },
   {
     id: 4,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 4",
   },
   {
     id: 5,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 5",
   },
   {
     id: 6,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/Slider.png",
+    imgUrl: sliderImage,
     alt: "slide 6",
   },
 ];
@@ -42,32 +44,32 @@ const sliderImages = [
 const sliderImages2 = [
   {
     id: 1,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 1",
   },
   {
     id: 2,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 2",
   },
   {
     id: 3,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 3",
   },
   {
     id: 4,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 4",
   },
   {
     id: 5,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 5",
   },
   {
     id: 6,
-    imgUrl: "http://localhost:5173/src/assets/image/branch/slider2.png",
+    imgUrl: sliderImage2,
     alt: "slide 6",
   },
 ];
