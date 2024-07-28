@@ -154,6 +154,11 @@ const Header = () => {
     sendOtpCode(phone);
   };
 
+  const handleChangePage = (url) => {
+    navigate(url);
+    setIsMenuOpen(false)
+  };
+
   return (
     <header className='shadow-md py-6 px-8 md:px-10 xl:px-28'>
       <div className='flex justify-between justify-items-center items-center'>
@@ -167,7 +172,7 @@ const Header = () => {
           ></i>
         </button>
         <div
-          className={`lg:hidden top-0 w-2/3 h-screen fixed bg-white z-30 transition-all duration-500 ease-in ${
+          className={`lg:hidden top-0 w-2/3 h-screen fixed bg-white z-30 transition-all duration-300 ease-in ${
             isMenuOpen ? "right-0" : "right-[-1000px]"
           }`}
         >
@@ -189,17 +194,20 @@ const Header = () => {
           <div className='py-2 px-4'>
             {hamburgerMenu.map((item) => (
               <div key={item.id}>
-                <Link
-                  to={item.url}
+                <button
+                  onClick={() => handleChangePage(item.url)}
                   className={`flex p-2 ${
                     location.pathname == item.url
                       ? "text-[#417F56]"
                       : "hover:text-[#417F56]"
                   }`}
                 >
-                  <i className='iconsax text-sm md:text-lg' icon-name={item.icon}></i>
+                  <i
+                    className='iconsax text-sm md:text-lg'
+                    icon-name={item.icon}
+                  ></i>
                   <p className='text-xs md:text-base mr-1'>{item.title}</p>
-                </Link>
+                </button>
                 <hr />
               </div>
             ))}

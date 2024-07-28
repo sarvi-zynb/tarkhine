@@ -7,6 +7,9 @@ import IconButton from "../../components/buttons/IconButton";
 import { ToastContainer } from "react-toastify";
 import sliderImage from "../../assets/image/branch/Slider.png";
 import sliderImage2 from "../../assets/image/branch/slider2.png";
+import { useNavigate } from "react-router-dom";
+import { server } from '../../../data/server';
+
 
 const sliderImages = [
   {
@@ -84,9 +87,11 @@ const Branch = () => {
   const [favoriteFoods, setFavoriteFoods] = useState([]);
   const [specialFoods, setSpecialFoods] = useState([]);
 
+  const navigate = useNavigate()
+
   useEffect(() => {
     axios
-      .get("http://localhost:8001/foods")
+      .get(`${server}/foods`)
       .then((result) => {
         setFoods(result.data);
         result.data.map((item) => {
@@ -98,7 +103,7 @@ const Branch = () => {
       .catch((error) => console.log(error));
 
     axios
-      .get("http://localhost:8001/comments")
+      .get(`${server}/comments`)
       .then((result) => {
         setComments(result.data);
       })
@@ -141,7 +146,7 @@ const Branch = () => {
       />
       <MultiSlider title={"غذا های غیر ایرانی"} cards={menuGheyrIrani} />
       <div className='flex justify-center mb-10'>
-        <IconButton icon={"note-text"}>مشاهده منوی کامل</IconButton>
+        <IconButton icon={"note-text"} onClick={()=>navigate('/menu')}>مشاهده منوی کامل</IconButton>
       </div>
 
       <div className='mt-5 mb-28'>

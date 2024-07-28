@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import empty_img from "../../assets/image/cart/Empty-page.png";
 import Button from "../../components/buttons/Button";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Cart from "./Cart";
 import Shopping from "./Shopping";
 import Payment from "./Payment";
@@ -11,6 +11,7 @@ import IconButton from "../../components/buttons/IconButton";
 import axios from "axios";
 import Modal from "../../components/modal";
 import { ToastContainer } from "react-toastify";
+import { server } from "../../../data/server";
 
 const Checkout = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -50,7 +51,7 @@ const Checkout = () => {
 
     useEffect(() => {
       axios
-        .get(`http://localhost:8001/foods/${item.id}`)
+        .get(`${server}/foods/${item.id}`)
         .then((result) => {
           setFood(result.data);
         })
@@ -96,7 +97,7 @@ const Checkout = () => {
 
   return (
     <>
-    <ToastContainer
+      <ToastContainer
         position='bottom-left'
         autoClose={5000}
         hideProgressBar={false}
@@ -170,39 +171,24 @@ const Checkout = () => {
         </ol>
       </div>
       <div className='md:hidden mx-8 py-5'>
-        {homeurl == "cart" && (
           <div className='flex justify-between'>
-            <button className='text-2xl'>
+            <button className='text-2xl' onClick={() => navigate(-1)}>
               <i className='iconsax' icon-name='chevron-right'></i>
             </button>
-            <p className='md:hidden text-base font-bold'>سبد خرید</p>
+            {homeurl == "cart" && (
+              <p className='md:hidden text-base font-bold'>سبد خرید</p>
+            )}
+            {homeurl == "shopping" && (
+              <p className='md:hidden text-base font-bold'>تکمیل اطلاعات</p>
+            )}
+            {homeurl == "payment" && (
+              <p className='md:hidden text-base font-bold'>پرداخت</p>
+            )}
+
             <button onClick={handleOpenModal}>
               <i className='iconsax text-2xl' icon-name='trash'></i>
             </button>
           </div>
-        )}
-        {homeurl == "shopping" && (
-          <div className='flex justify-between'>
-            <button className='text-2xl'>
-              <i className='iconsax' icon-name='chevron-right'></i>
-            </button>
-            <p className='md:hidden text-base font-bold'>تکمیل اطلاعات</p>
-            <button onClick={handleOpenModal}>
-              <i className='iconsax text-2xl' icon-name='trash'></i>
-            </button>
-          </div>
-        )}
-        {homeurl == "payment" && (
-          <div className='flex justify-between'>
-            <button className='text-2xl'>
-              <i className='iconsax' icon-name='chevron-right'></i>
-            </button>
-            <p className='md:hidden text-base font-bold'>پرداخت</p>
-            <button onClick={handleOpenModal}>
-              <i className='iconsax text-2xl' icon-name='trash'></i>
-            </button>
-          </div>
-        )}
       </div>
       <div className='mb-10'>
         {isEmpty ? (
@@ -320,11 +306,15 @@ const Checkout = () => {
             آیا مایل به خروج از حساب کاربری خود هستید؟
           </p>
           <div className='flex justify-center gap-5'>
-            <Button filled={true} className={'w-full'} onClick={handleCloseModal}>
+            <Button
+              filled={true}
+              className={"w-full"}
+              onClick={handleCloseModal}
+            >
               بازگشت
             </Button>
             <button
-              className='bg-[#FFF2F2] w-full text-[#C30000] text-[9px] md:text-xs lg:text-base rounded-[4px] px-2 py-1'
+              className='bg-[#FFF2F2] w-full text-[#C30000] text-xs md:text-sm lg:text-base rounded-[4px] px-2 py-1'
               onClick={handleClearCart}
             >
               حذف

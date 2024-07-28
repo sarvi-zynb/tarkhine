@@ -18,7 +18,7 @@ const Layout = () => {
       <Route path='/checkout/shopping' element={<Checkout />} />
       <Route path='/checkout/payment' element={<Checkout />} />
       <Route path='/profile' element={<Profile />} />
-      <Route path='/profile/1' element={<Profile />} />
+      <Route path='/profile/edit' element={<Profile />} />
       <Route path='/profile/2' element={<Profile />} />
       <Route path='/order' element={<Profile />} />
       <Route path='/interests' element={<Profile />} />

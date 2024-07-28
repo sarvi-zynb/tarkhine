@@ -11,25 +11,12 @@ const Profile = () => {
 
   const url = path.pathname.split("/");
 
-  const [homeUrl, setHomeUrl] = useState(url[url.length - 1]);
+  const [homeUrl, setHomeUrl] = useState(url[1]);
   const [logoutModal, setLogoutModal] = useState(false);
 
-  const modals = useRef(null);
-
   useEffect(() => {
-    setHomeUrl(url[url.length - 1]);
+    setHomeUrl(url[1]);
   }, [url]);
-
-  useEffect(() => {
-    document.addEventListener("mousedown", closeOpenModals);
-  }, [logoutModal]);
-
-  const closeOpenModals = (e) => {
-    if (logoutModal && !modals.current?.contains(e.target)) {
-      setLogoutModal(false);
-    }
-  };
-
   const handleOpenLogoutModal = () => {
     setLogoutModal(true);
   };
@@ -39,7 +26,11 @@ const Profile = () => {
   };
 
   const goToEdit = () => {
-    navigate("/profile/1");
+    navigate("/profile/edit");
+  };
+
+  const goToBack = () => {
+    navigate("/profile");
   };
 
   const profileMenu = [
@@ -47,38 +38,38 @@ const Profile = () => {
       id: 1,
       title: "پروفایل",
       icon: "user-2",
-      url: "/profile",
+      url: "profile",
     },
     {
       id: 2,
       title: "پیگیری سفارش",
       icon: "wallet-2",
-      url: "/order",
+      url: "order",
     },
     {
       id: 3,
       title: "علاقه مندی ها",
       icon: "heart",
-      url: "/interests",
+      url: "interests",
     },
     {
       id: 4,
       title: "آدرس های من",
       icon: "location",
-      url: "/address",
+      url: "address",
     },
     {
       id: 5,
       title: "خروج",
       icon: "logout-2",
-      url: "/logout",
+      url: "logout",
       click: handleOpenLogoutModal,
     },
   ];
 
   return (
     <>
-      <div className='flex gap-5 px-28 py-12'>
+      <div className='flex gap-5 px-8 md:px-10 xl:px-28 py-6 md:py-12'>
         <div className='w-1/4 border border-[#CBCBCB] rounded-md px-3 py-5'>
           <div className='flex items-center gap-5 mb-3'>
             <div className='w-1/3'>
@@ -106,7 +97,7 @@ const Profile = () => {
                   ) : (
                     <div
                       className={
-                        path.pathname == item.url
+                        homeUrl == item.url
                           ? "opacity-100 h-8 w-[3px] rounded-full bg-[#417F56]"
                           : "opacity-0 group-hover:opacity-100 h-8 w-[3px] rounded-full group-hover:bg-[#417F56]"
                       }
@@ -116,7 +107,7 @@ const Profile = () => {
                   {index == profileMenu.length - 1 ? (
                     <i
                       className={
-                        path.pathname == item.url
+                        homeUrl == item.url
                           ? "iconsax text-md ml-1 mr-1 font-bold text-[#C30000]"
                           : "iconsax text-md ml-1 mr-1 group-hover:font-bold group-hover:text-[#C30000]"
                       }
@@ -125,7 +116,7 @@ const Profile = () => {
                   ) : (
                     <i
                       className={
-                        path.pathname == item.url
+                        homeUrl == item.url
                           ? "iconsax text-md ml-1 mr-1 font-bold text-[#417F56]"
                           : "iconsax text-md ml-1 mr-1 group-hover:font-bold group-hover:text-[#417F56]"
                       }
@@ -137,7 +128,7 @@ const Profile = () => {
                       onClick={item.click}
                       to={item.url}
                       className={
-                        homeUrl == item.id
+                        homeUrl == item.url
                           ? "text-sm font-bold text-[#C30000]"
                           : "text-sm group-hover:font-bold group-hover:text-[#C30000]"
                       }
@@ -146,9 +137,9 @@ const Profile = () => {
                     </button>
                   ) : (
                     <Link
-                      to={item.url}
+                      to={`/${item.url}`}
                       className={
-                        homeUrl == item.id
+                        homeUrl == item.url
                           ? "text-sm font-bold text-[#417F56]"
                           : "text-sm group-hover:font-bold group-hover:text-[#417F56]"
                       }
@@ -189,7 +180,7 @@ const Profile = () => {
                 placeholder='تلفن'
                 className='border border-[#CBCBCB] p-2 rounded-[4px]'
                 type='number'
-                value={"09330792590"}
+                value={"09330111111"}
               />
               <input
                 placeholder='تاریخ تولد'
@@ -212,7 +203,7 @@ const Profile = () => {
           </div>
         )}
 
-        {homeUrl == 1 && (
+        {path.pathname == "/profile/edit" && (
           <div className='w-3/4 h-[494px] border border-[#CBCBCB] rounded-md p-5'>
             <p className='text-[353535] font-bold text-xl mb-3'>
               ویرایش اطلاعات شخصی
@@ -241,7 +232,7 @@ const Profile = () => {
                 placeholder='تلفن'
                 className='border border-[#CBCBCB] p-2 rounded-[4px]'
                 type='number'
-                value={"09330792590"}
+                value={"09330111111"}
               />
               <input
                 placeholder='تاریخ تولد'
@@ -258,8 +249,8 @@ const Profile = () => {
             </div>
             <div className='flex justify-end mx-28'>
               <div className='grid grid-cols-2 gap-5'>
-                <Button onClick={goToEdit}>انصراف</Button>
-                <Button onClick={goToEdit} filled={true}>
+                <Button onClick={goToBack}>انصراف</Button>
+                <Button filled={true}>
                   ذخیره اطلاعات
                 </Button>
               </div>
@@ -269,13 +260,17 @@ const Profile = () => {
       </div>
       {logoutModal && (
         <>
-          <Modal ref={modals} close={handleCloseLogoutModal} title={"خروج"}>
+          <Modal close={handleCloseLogoutModal} title={"خروج"}>
             <div className='px-10'>
               <p className='text-center text-base py-6 text-[#353535]'>
                 آیا مایل به خروج از حساب کاربری خود هستید؟
               </p>
               <div className='flex justify-center gap-5'>
-                <Button className={'w-full'} filled={true} onClick={handleCloseLogoutModal}>
+                <Button
+                  className={"w-full"}
+                  filled={true}
+                  onClick={handleCloseLogoutModal}
+                >
                   بازگشت
                 </Button>
                 <button className='w-full py-1 px-2 md:px-5 rounded-[4px] bg-[#FFF2F2] text-[#C30000]'>

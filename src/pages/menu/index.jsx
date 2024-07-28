@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Slider from "../../components/slider";
 import Searchbox from "../../components/searchbox";
@@ -7,6 +7,7 @@ import IconButton from "../../components/buttons/IconButton";
 import Card from "../../components/MenuPage/card";
 import { ToastContainer } from "react-toastify";
 import sliderImage from '../../assets/image/menu/Slider.png'
+import { server } from "../../../data/server";
 
 
 const sliderImages = [
@@ -48,9 +49,11 @@ const Menu = () => {
   const [menuPizza, setMenuPizza] = useState([]);
   const [menuSandevich, setMenuSandevich] = useState([]);
 
+  const navigte = useNavigate()
+
   useEffect(() => {
     axios
-      .get("http://localhost:8001/foods")
+      .get(`${server}/foods`)
       .then((result) => {
         result.data.map((item) => {
           if (item.id < 13) {
@@ -123,7 +126,7 @@ const Menu = () => {
       <div className='px-8 md:px-10 xl:px-28 mt-10'>
         <div className='flex justify-between'>
           <p className='text-[#353535] font-bold text-sm md:text-base lg:text-2xl'>غذاهای ایرانی</p>
-          <IconButton icon={"shopping-cart"}>تکمیل خرید</IconButton>
+          <IconButton icon={"shopping-cart"} onClick={()=>navigte('/checkout/cart')}>تکمیل خرید</IconButton>
         </div>
         <div className='grid lg:grid-cols-2 gap-4 mt-5'>
           {menuIrani.map((item) => (

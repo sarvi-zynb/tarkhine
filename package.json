@@ -11,7 +11,7 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "server": "json-server --watch src/data/db.json --port 8001"
+    "server": "json-server --watch data/db.json --port 8001"
   },
   "dependencies": {
     "@emotion/react": "^11.11.4",
