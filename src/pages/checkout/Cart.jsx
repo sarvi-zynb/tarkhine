@@ -10,6 +10,7 @@ const Cart = () => {
   const Card = ({ item }) => {
     const [food, setFood] = useState({});
     const [price, setPrice] = useState(0);
+
     const { deleteFromCart, addToCart, removeItemFromCart } =
       useShoppingCartContext();
 

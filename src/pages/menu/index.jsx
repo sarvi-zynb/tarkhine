@@ -6,7 +6,7 @@ import Searchbox from "../../components/searchbox";
 import IconButton from "../../components/buttons/IconButton";
 import Card from "../../components/MenuPage/card";
 import { ToastContainer } from "react-toastify";
-import sliderImage from '../../assets/image/menu/Slider.png'
+import sliderImage from "../../assets/image/menu/Slider.png";
 import { server } from "../../../data/server";
 import Spinner from "../../components/spinner";
 
@@ -50,7 +50,7 @@ const Menu = () => {
   const [menuSandevich, setMenuSandevich] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const navigte = useNavigate()
+  const navigte = useNavigate();
 
   useEffect(() => {
     axios
@@ -74,7 +74,7 @@ const Menu = () => {
 
   return (
     <>
-    <ToastContainer
+      <ToastContainer
         position='bottom-left'
         autoClose={5000}
         hideProgressBar={false}
@@ -120,7 +120,7 @@ const Menu = () => {
         </ul>
       </div>
       <div className='px-8 md:px-10 xl:px-28 grid grid-cols-5 items-center mt-3'>
-        <div className="lg:col-span-3"></div>
+        <div className='lg:col-span-3'></div>
         <div className='col-span-5 md:col-span-3 lg:col-span-2'>
           <Searchbox />
         </div>
@@ -130,47 +130,62 @@ const Menu = () => {
         <Spinner />
       ) : (
         <>
-      <div className='px-8 md:px-10 xl:px-28 mt-10'>
-        <div className='flex justify-between'>
-          <p className='text-[#353535] font-bold text-sm md:text-base lg:text-2xl'>غذاهای ایرانی</p>
-          <IconButton icon={"shopping-cart"} onClick={()=>navigte('/checkout/cart')}>تکمیل خرید</IconButton>
-        </div>
-        <div className='grid lg:grid-cols-2 gap-4 mt-5'>
-          {menuIrani.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
-      <div className='px-8 md:px-10 xl:px-28 mt-10'>
-        <div className='flex justify-between'>
-          <p className='text-[#353535] font-bold text-base lg:text-2xl'>غذاهای غیر ایرانی</p>
-        </div>
-        <div className='grid lg:grid-cols-2 gap-4 mt-5'>
-          {menuGheyrIrani.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
-      <div className='px-8 md:px-10 xl:px-28 mt-10'>
-        <div className='flex justify-between'>
-          <p className='text-[#353535] font-bold text-base lg:text-2xl'>پیتزاها</p>
-        </div>
-        <div className='grid lg:grid-cols-2 gap-4 mt-5'>
-          {menuPizza.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
-      <div className='px-8 md:px-10 xl:px-28 mt-10 mb-10'>
-        <div className='flex justify-between'>
-          <p className='text-[#353535] font-bold text-base lg:text-2xl'>ساندویچ ها</p>
-        </div>
-        <div className='grid lg:grid-cols-2 gap-4 mt-5'>
-          {menuSandevich.map((item) => (
-            <Card key={item.id} item={item} />
-          ))}
-        </div>
-      </div>
+          <div className='px-8 md:px-10 xl:px-28 mt-10'>
+            <div className='flex justify-between'>
+              <p className='text-[#353535] font-bold text-sm md:text-base lg:text-2xl'>
+                غذاهای ایرانی
+              </p>
+              <IconButton
+                icon={"shopping-cart"}
+                onClick={() => navigte("/checkout/cart")}
+              >
+                تکمیل خرید
+              </IconButton>
+            </div>
+            <div className='grid lg:grid-cols-2 gap-4 mt-5'>
+              {menuIrani.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+          <div className='px-8 md:px-10 xl:px-28 mt-10'>
+            <div className='flex justify-between'>
+              <p className='text-[#353535] font-bold text-base lg:text-2xl'>
+                غذاهای غیر ایرانی
+              </p>
+            </div>
+            <div className='grid lg:grid-cols-2 gap-4 mt-5'>
+              {menuGheyrIrani.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+          <div className='px-8 md:px-10 xl:px-28 mt-10'>
+            <div className='flex justify-between'>
+              <p className='text-[#353535] font-bold text-base lg:text-2xl'>
+                پیتزاها
+              </p>
+            </div>
+            <div className='grid lg:grid-cols-2 gap-4 mt-5'>
+              {menuPizza.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+          <div className='px-8 md:px-10 xl:px-28 mt-10 mb-10'>
+            <div className='flex justify-between'>
+              <p className='text-[#353535] font-bold text-base lg:text-2xl'>
+                ساندویچ ها
+              </p>
+            </div>
+            <div className='grid lg:grid-cols-2 gap-4 mt-5'>
+              {menuSandevich.map((item) => (
+                <Card key={item.id} item={item} />
+              ))}
+            </div>
+          </div>
+        </>
+      )}
     </>
   );
 };

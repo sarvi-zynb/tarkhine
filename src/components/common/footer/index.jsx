@@ -59,7 +59,6 @@ const Footer = () => {
                   style={{ resize: "none" }}
                   name='comment'
                   placeholder='پیام شما'
-                  value=''
                   className='bg-transparent border border-[#717171] p-4 rounded-[4px] h-full w-full text-[#F9F9F9] text-sm  placeholder:text-xs'
                 ></textarea>
               </div>

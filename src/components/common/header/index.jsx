@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import logo from "../../../assets/image/common/Logo.png";
 import logoMenu from "../../../assets/image/common/LogoMenu.png";
 import topFrame from "../../../assets/image/common/topFrame.png";
@@ -47,29 +47,19 @@ const Header = () => {
   const [userDropDown, setUserDropDown] = useState(false);
   const [showSearchModal, setShowSearchModal] = useState(false);
   const [logoutModal, setLogoutModal] = useState(false);
-  const [disabledPhone, setDisabledPhone] = useState(true);
-  const [disabledPass, setDisabledPass] = useState(true);
-  const [timer, setTimer] = useState(0);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const menus = useRef(null);
-
   const { totalQuantity } = useShoppingCartContext();
   const {
-    isLogin,
+    token,
     loginModal,
+    handleOpenLoginModal,
+    handleCloseLoginModal,
     loginPages,
     setLoginPages,
-    timerStatus,
-    setTimerStatus,
-    phone,
-    setPhone,
-    code,
-    setCode,
-    handleCloseLoginModal,
-    handleOpenLoginModal,
-    sendOtpCode,
-    Login,
+    setUserData,
+    signUpUser,
+    signInUser,
+    signOut,
   } = useAuthContext();
 
   const url = location.pathname.split("/");
@@ -81,19 +71,6 @@ const Header = () => {
   useEffect(() => {
     setHomeUrl(url[url.length - 2]);
   }, [url]);
-
-  useEffect(() => {
-    const interval =
-      timer > 0 &&
-      setInterval(() => setTimer(timer - 1), timerStatus == true ? 1000 : null);
-    return () => {
-      clearInterval(interval);
-    };
-  }, [timer]);
-
-  useEffect(() => {
-    timerStatus ? setTimer(60) : setTimer(0);
-  }, [timerStatus]);
 
   const handleOpenLogoutModal = () => {
     setLogoutModal(true);
@@ -119,46 +96,35 @@ const Header = () => {
     navigate("/checkout/cart");
   };
 
-  const editPhone = () => {
-    setLoginPages(1);
-  };
-
-  const checkPhone = (phone) => {
-    setLoginPages(2);
-    sendOtpCode(phone);
-    setTimerStatus(true);
-  };
-
-  const checkPass = (phone, code) => {
-    Login(phone, code);
-  };
-
-  useEffect(() => {
-    if (phone.length < 11) {
-      setDisabledPhone(true);
-    } else {
-      setDisabledPhone(false);
-    }
-  }, [phone]);
-
-  useEffect(() => {
-    if (phone.length < 6) {
-      setDisabledPass(true);
-    } else {
-      setDisabledPass(false);
-    }
-  }, [code]);
-
-  const resendOtpCode = () => {
-    setTimer(60);
-    setTimerStatus(true);
-    sendOtpCode(phone);
-  };
-
   const handleChangePage = (url) => {
     navigate(url);
-    setIsMenuOpen(false)
+    setIsMenuOpen(false);
   };
+
+  const handleChangeUserData = (e) => {
+    setUserData((prevData) => {
+      return { ...prevData, [e.target.name]: e.target.value };
+    });
+  };
+
+  // useEffect(() => {
+  //   const interval =
+  //     timer > 0 &&
+  //     setInterval(() => setTimer(timer - 1), timerStatus == true ? 1000 : null);
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [timer]);
+
+  // useEffect(() => {
+  //   timerStatus ? setTimer(60) : setTimer(0);
+  // }, [timerStatus]);
+
+  // const resendOtpCode = () => {
+  //   sendOtpCode();
+  //   setTimer(60);
+  //   setTimerStatus(true);
+  // };
 
   return (
     <header className='shadow-md py-6 px-8 md:px-10 xl:px-28'>
@@ -430,10 +396,10 @@ const Header = () => {
                 ? "flex relative items-center bg-[#417F56] text-white py-1 px-2 rounded-md"
                 : "flex relative items-center bg-[#E5F2E9] text-[#417F56] py-1 px-2 rounded-md"
             }
-            onClick={isLogin ? handleOpenUserDropDown : handleOpenLoginModal}
+            onClick={token ? handleOpenUserDropDown : handleOpenLoginModal}
           >
             <i className='iconsax text-sm lg:text-2xl' icon-name='user-2'></i>
-            {isLogin ? (
+            {token ? (
               <i
                 className='iconsax text-sm lg:text-xl'
                 icon-name='chevron-down'
@@ -442,7 +408,6 @@ const Header = () => {
 
             {userDropDown && (
               <div
-                ref={menus}
                 style={{ boxShadow: "1px -0.5px 6px -4px rgba(115,115,115,1)" }}
                 className='absolute left-0 top-8 md:top-10 bg-white w-28 md:w-36 z-20 rounded-sm text-[#353535] px-1 md:px-2 md:py-1'
               >
@@ -517,7 +482,7 @@ const Header = () => {
       </div>
       {showSearchModal && (
         <>
-          <Modal ref={menus} close={handleCloseSearchModal} title={"جستجو"}>
+          <Modal close={handleCloseSearchModal} title={"جستجو"}>
             <div className='px-20'>
               <p className='text-center md:text-xs lg:text-base py-6 text-[#353535]'>
                 لطفا متن خود را تایپ و سپس دکمه Enter را بزنید.
@@ -528,54 +493,65 @@ const Header = () => {
         </>
       )}
 
-      {logoutModal && (
-        <>
-          <Modal ref={menus} close={handleCloseLogoutModal} title={"خروج"}>
-            <p className='text-center text-xs md:text-base py-6 text-[#353535]'>
-              آیا مایل به خروج از حساب کاربری خود هستید؟
-            </p>
-            <div className='flex justify-center gap-5'>
-              <Button filled={true} onClick={handleCloseLogoutModal}>
-                بازگشت
-              </Button>
-              <button className='bg-[#FFF2F2] text-[#C30000] text-[9px] md:text-xs lg:text-base rounded-[4px] px-2 py-1'>
-                خروج
-              </button>
-            </div>
-          </Modal>
-        </>
-      )}
-
       {loginModal && (
         <Modal
-          ref={menus}
-          back={loginPages == 2 && editPhone}
           close={handleCloseLoginModal}
-          title={<img src={logo} className='w-[102px]' />}
+          title={<img src={logo} className='w-[100px]' />}
         >
-          <div className='mt-5'>
+          <div className='mt-5 max-w-[400px]'>
             {loginPages == 1 ? (
               <>
                 <h3 className='text-center text-[#353535] text-sm md:text-base'>
-                  ورود / ثبت نام
+                  <button
+                    className={loginPages == 1 && "text-[#417F56]"}
+                    onClick={() => {
+                      setLoginPages(1);
+                      setUserData({});
+                    }}
+                  >
+                    ثبت نام
+                  </button>
+                  /
+                  <button
+                    onClick={() => {
+                      setLoginPages(2);
+                      setUserData({});
+                    }}
+                  >
+                    ورود
+                  </button>
                 </h3>
-                <p className='text-center text-[10px] md:text-xs text-[#717171] mt-2'>
-                  با وارد کردن شماره موبایل کد تاییدی برای شما ارسال خواهد شد.
-                </p>
+                {/* <p className='text-center text-[10px] md:text-xs text-[#717171] mt-2'>
+                  با وارد کردن ایمیل کد تاییدی برای شما ارسال خواهد شد.
+                </p> */}
                 <input
-                  placeholder='شماره همراه'
-                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-5 placeholder:text-xs'
-                  type='number'
-                  onChange={(e) => setPhone(e.target.value)}
+                  placeholder='نام و نام خانوادگی'
+                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-2 placeholder:text-xs'
+                  type='text'
+                  name='fullName'
+                  onChange={handleChangeUserData}
+                />
+                <input
+                  placeholder='ایمیل'
+                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-2 placeholder:text-xs'
+                  type='email'
+                  name='email'
+                  onChange={handleChangeUserData}
+                />
+                <input
+                  placeholder='رمز عبور'
+                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-2 placeholder:text-xs'
+                  type='password'
+                  name='password'
+                  onChange={handleChangeUserData}
                 />
                 <div className='flex justify-center gap-5 mt-3'>
                   <Button
                     filled={true}
-                    onClick={() => checkPhone(phone)}
-                    disabled={disabledPhone}
                     className={"w-full"}
+                    onClick={signUpUser}
                   >
-                    ادامه
+                    ثبت نام
                   </Button>
                 </div>
                 <p className='text-[8px] md:text-[10px] text-center mt-3'>
@@ -588,18 +564,67 @@ const Header = () => {
               </>
             ) : (
               <>
-                <h3 className='text-center text-[#353535] text-base'>
+                <h3 className='text-center text-[#353535] text-sm md:text-base'>
+                  <button
+                    onClick={() => {
+                      setLoginPages(1);
+                      setUserData({});
+                    }}
+                  >
+                    ثبت نام
+                  </button>
+                  /
+                  <button
+                    className={loginPages == 2 && "text-[#417F56]"}
+                    onClick={() => {
+                      setLoginPages(2);
+                      setUserData({});
+                    }}
+                  >
+                    ورود
+                  </button>
+                </h3>
+                <input
+                  placeholder='ایمیل'
+                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-2 placeholder:text-xs'
+                  type='email'
+                  name='email'
+                  onChange={handleChangeUserData}
+                />
+                <input
+                  placeholder='رمز عبور'
+                  className='w-full border border-[#CBCBCB] rounded-[4px] p-2 mt-2 placeholder:text-xs'
+                  type='password'
+                  name='password'
+                  onChange={handleChangeUserData}
+                />
+                <div className='flex justify-center gap-5 mt-3'>
+                  <Button
+                    filled={true}
+                    className={"w-full"}
+                    onClick={signInUser}
+                  >
+                    ورود
+                  </Button>
+                </div>
+                <p className='text-[8px] md:text-[10px] text-center mt-3'>
+                  ورود و عضویت در ترخینه به منزله قبول
+                  <span className='text-[#417F56]'>
+                    <Link> قوانین و مقررات </Link>
+                  </span>
+                  است.
+                </p>
+                {/* <h3 className='text-center text-[#353535] text-base'>
                   کد تائید
                 </h3>
                 <p className='text-center text-xs text-[#717171] mt-2'>
-                  {`کد تایید پنج‌رقمی به شماره ${phone} ارسال شد.`}
+                  {`کد تایید شش رقمی به ایمیل شما ارسال شد.`}
                 </p>
                 <div className='mt-5'>
                   <VerificationInput
                     autoComplete='one-time-code'
                     validChars={"0-9"}
                     placeholder={""}
-                    // value={code}
                     color='primary'
                     onChange={(e) => setCode(e)}
                     removeDefaultStyles
@@ -626,9 +651,10 @@ const Header = () => {
                     </div>
                     <button
                       className='text-[#417F56] text-xs'
-                      onClick={editPhone}
+                      disabled={timer > 0 && true}
+                      onClick={editEmail}
                     >
-                      ویرایش شماره
+                      ویرایش ایمیل
                     </button>
                   </div>
                   <div className='flex justify-center gap-5 mt-3'>
@@ -636,16 +662,44 @@ const Header = () => {
                       filled={true}
                       disabled={disabledPass}
                       className={"w-full"}
-                      onClick={() => checkPass(code)}
+                      onClick={verifyOtpCode}
                     >
                       ثبت کد
                     </Button>
                   </div>
-                </div>
+                </div> */}
               </>
             )}
           </div>
         </Modal>
+      )}
+
+      {logoutModal && (
+        <>
+          <Modal close={handleCloseLogoutModal} title={"خروج"}>
+            <p className='text-center text-xs md:text-base py-6 text-[#353535]'>
+              آیا مایل به خروج از حساب کاربری خود هستید؟
+            </p>
+            <div className='flex justify-center gap-5'>
+              <Button
+                filled={true}
+                onClick={handleCloseLogoutModal}
+                className={"w-full"}
+              >
+                بازگشت
+              </Button>
+              <button
+                className='bg-[#FFF2F2] w-full text-[#C30000] text-[9px] md:text-xs lg:text-base rounded-[4px] px-2 py-1'
+                onClick={() => {
+                  signOut;
+                  handleCloseLogoutModal()
+                }}
+              >
+                خروج
+              </button>
+            </div>
+          </Modal>
+        </>
       )}
     </header>
   );

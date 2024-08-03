@@ -1,8 +1,7 @@
-const Modal = ({ close, ref, title, children, bg, back }) => {
+const Modal = ({ close, title, children, bg, back }) => {
   return (
     <>
       <div
-        ref={ref}
         className='flex justify-center items-center fixed inset-0 z-50'
       >
         <div className='relative w-auto my-6 mx-auto max-w-xs md:max-w-xl lg:max-w-3xl'>

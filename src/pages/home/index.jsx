@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import {useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import About from "../../components/HomePage/about";
 import Modal from "../../components/modal";
@@ -159,7 +159,6 @@ const HomePage = () => {
   const [modalBackgroundImg, setModalBackgroundImg] = useState(
     bgPicture[0].img
   );
-  const modals = useRef(null);
 
   const navigate = useNavigate()
 
@@ -219,7 +218,6 @@ const HomePage = () => {
       <Branches openModal={handleOpenBranchPicModal} />
       {showBranchModal && (
         <Modal
-          ref={modals}
           title={"انتخاب شعبه"}
           close={handleCloseBranchModal}
         >
@@ -252,7 +250,6 @@ const HomePage = () => {
       {showBranchPicModal && (
         <>
           <Modal
-            // ref={modals}
             close={handleCloseBranchPicModal}
             bg={modalBackgroundImg}
           >

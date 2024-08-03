@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import MultiSlider from "../../components/BranchPage/multipleSlider";
 import Slider from "../../components/slider";
-import star_rate from "../../assets/icons/Star-rate.png";
 import IconButton from "../../components/buttons/IconButton";
 import { ToastContainer } from "react-toastify";
 import sliderImage from "../../assets/image/branch/Slider.png";
 import sliderImage2 from "../../assets/image/branch/slider2.png";
+import star_rate from "../../assets/icons/Star-rate.png";
 import { useNavigate } from "react-router-dom";
 import { server } from "../../../data/server";
 import Spinner from "./../../components/spinner";
@@ -81,14 +81,12 @@ const Branch = () => {
   const [curr, setCurr] = useState(0);
   const [foods, setFoods] = useState([]);
   const [menuGheyrIrani, setMenuGheyrIrani] = useState([]);
-
   const [comments, setComments] = useState([]);
-
   const [favoriteFoods, setFavoriteFoods] = useState([]);
   const [specialFoods, setSpecialFoods] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -145,15 +143,20 @@ const Branch = () => {
         <Spinner />
       ) : (
         <>
-      <MultiSlider title={"پیشنهاد ویژه"} cards={specialFoods} />
-      <MultiSlider
-        title={"غذا های محبوب"}
-        cards={favoriteFoods}
-        bgColor={"#315F41"}
-      />
-      <MultiSlider title={"غذا های غیر ایرانی"} cards={menuGheyrIrani} />
+          <MultiSlider title={"پیشنهاد ویژه"} cards={specialFoods} />
+          <MultiSlider
+            title={"غذا های محبوب"}
+            cards={favoriteFoods}
+            bgColor={"#315F41"}
+          />
+          <MultiSlider title={"غذا های غیر ایرانی"} cards={menuGheyrIrani} />
+        </>
+      )}
+
       <div className='flex justify-center mb-10'>
-        <IconButton icon={"note-text"} onClick={()=>navigate('/menu')}>مشاهده منوی کامل</IconButton>
+        <IconButton icon={"note-text"} onClick={() => navigate("/menu")}>
+          مشاهده منوی کامل
+        </IconButton>
       </div>
 
       <div className='mt-5 mb-28'>
@@ -216,60 +219,61 @@ const Branch = () => {
       {loading ? (
         <Spinner />
       ) : (
-      <div className='my-10'>
-        <p className='text-center my-3 font-bold text-base md:text-xl lg:text-2xl text-[#353535]'>
-          نظرات کاربران
-        </p>
-        <div className='pr-8 md:pr-16 lg:pr-28 relative'>
-          <div className='flex gap-5 overflow-x-hidden mt-5'>
-            {comments.map((item) => (
-              <div
-                className='transition-transform ease-out duration-500'
-                style={{ transform: `translateX(${curr * 100}%)` }}
-                key={item.id}
-              >
-                <div className='border border-[#CBCBCB] p-3 md:p-5 rounded-md w-[252px] md:w-[500px]'>
-                  <div className='flex items-center'>
-                    <div className='text-[#717171] text-[10px] md:text-xs w-28 text-center'>
-                      <img
-                        className='w-3/5 md:w-4/5 m-auto mb-2'
-                        src={item.profile}
-                      />
-                      <p>{item.name}</p>
-                      <p>{item.date}</p>
+        <div className='my-10'>
+          <p className='text-center my-3 font-bold text-base md:text-xl lg:text-2xl text-[#353535]'>
+            نظرات کاربران
+          </p>
+          <div className='pr-8 md:pr-16 lg:pr-28 relative'>
+            <div className='flex gap-5 overflow-x-hidden mt-5'>
+              {comments.map((item) => (
+                <div
+                  className='transition-transform ease-out duration-500'
+                  style={{ transform: `translateX(${curr * 100}%)` }}
+                  key={item.id}
+                >
+                  <div className='border border-[#CBCBCB] p-3 md:p-5 rounded-md w-[252px] md:w-[500px]'>
+                    <div className='flex items-center'>
+                      <div className='text-[#717171] text-[10px] md:text-xs w-28 text-center'>
+                        <img
+                          className='w-3/5 md:w-4/5 m-auto mb-2'
+                          src={item.profile}
+                        />
+                        <p>{item.name}</p>
+                        <p>{item.date}</p>
+                      </div>
+                      <div className='text-justify w-full text-[#353535] text-[10px] md:text-sm lg:text-base'>
+                        {item.comments}
+                      </div>
                     </div>
-                    <div className='text-justify w-full text-[#353535] text-[10px] md:text-sm lg:text-base'>
-                      {item.comments}
-                    </div>
-                  </div>
-                  <div className='flex justify-end'>
-                    <div className='flex items-center gap-1'>
-                      <img src={star_rate} className='w-3 h-3' />
-                      <p>{item.rate}</p>
+                    <div className='flex justify-end'>
+                      <div className='flex items-center gap-1'>
+                        <img src={star_rate} className='w-3 h-3' />
+                        <p>{item.rate}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
+              ))}
+            </div>
+            <div className='max-md:hidden absolute z-10 inset-0 self-center mt-24 mx-24'>
+              <div className='flex justify-between'>
+                <button onClick={handlePrev}>
+                  <i
+                    className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+                    icon-name='chevron-right'
+                  ></i>
+                </button>
+                <button onClick={handleNext}>
+                  <i
+                    className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+                    icon-name='chevron-left'
+                  ></i>
+                </button>
               </div>
-            ))}
-          </div>
-          <div className='max-md:hidden absolute z-10 inset-0 self-center mt-24 mx-24'>
-            <div className='flex justify-between'>
-              <button onClick={handlePrev}>
-                <i
-                  className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
-                  icon-name='chevron-right'
-                ></i>
-              </button>
-              <button onClick={handleNext}>
-                <i
-                  className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
-                  icon-name='chevron-left'
-                ></i>
-              </button>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </>
   );
 };

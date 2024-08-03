@@ -28,7 +28,7 @@ const Checkout = () => {
     deleteFromCart,
     removeItemFromCart,
   } = useShoppingCartContext();
-  const { isLogin, handleOpenLoginModal } = useAuthContext();
+  const { handleOpenLoginModal, token } = useAuthContext();
 
   const url = location.pathname.split("/");
   const [homeurl, setHomeurl] = useState(url[url.length - 1]);
@@ -171,24 +171,24 @@ const Checkout = () => {
         </ol>
       </div>
       <div className='md:hidden mx-8 py-5'>
-          <div className='flex justify-between'>
-            <button className='text-2xl' onClick={() => navigate(-1)}>
-              <i className='iconsax' icon-name='chevron-right'></i>
-            </button>
-            {homeurl == "cart" && (
-              <p className='md:hidden text-base font-bold'>سبد خرید</p>
-            )}
-            {homeurl == "shopping" && (
-              <p className='md:hidden text-base font-bold'>تکمیل اطلاعات</p>
-            )}
-            {homeurl == "payment" && (
-              <p className='md:hidden text-base font-bold'>پرداخت</p>
-            )}
+        <div className='flex justify-between'>
+          <button className='text-2xl' onClick={() => navigate(-1)}>
+            <i className='iconsax' icon-name='chevron-right'></i>
+          </button>
+          {homeurl == "cart" && (
+            <p className='md:hidden text-base font-bold'>سبد خرید</p>
+          )}
+          {homeurl == "shopping" && (
+            <p className='md:hidden text-base font-bold'>تکمیل اطلاعات</p>
+          )}
+          {homeurl == "payment" && (
+            <p className='md:hidden text-base font-bold'>پرداخت</p>
+          )}
 
-            <button onClick={handleOpenModal}>
-              <i className='iconsax text-2xl' icon-name='trash'></i>
-            </button>
-          </div>
+          <button onClick={handleOpenModal}>
+            <i className='iconsax text-2xl' icon-name='trash'></i>
+          </button>
+        </div>
       </div>
       <div className='mb-10'>
         {isEmpty ? (
@@ -262,7 +262,7 @@ const Checkout = () => {
                 <p className='font-bold'>مبلغ قابل پرداخت</p>
                 <p className='text-[#417F56]'>542000 تومان</p>
               </div>
-              {homeurl == "cart" && isLogin && (
+              {homeurl == "cart" && token && (
                 <IconButton
                   icon={"tick-circle"}
                   filled={true}
@@ -272,7 +272,7 @@ const Checkout = () => {
                   ادامه خرید
                 </IconButton>
               )}
-              {homeurl == "cart" && isLogin == false && (
+              {homeurl == "cart" && token == false && (
                 <IconButton
                   icon={"user-2"}
                   filled={true}

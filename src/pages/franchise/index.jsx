@@ -197,7 +197,6 @@ const Franchise = () => {
               style={{ resize: "none" }}
               name='address'
               placeholder='آدرس دقیق'
-              value=''
               className='border border-[#CBCBCB] p-2 rounded-[4px] placeholder:text-xs h-[100px] w-full text-[#F9F9F9] text-sm'
             ></textarea>
           </div>

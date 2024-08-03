@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import profile from "../../assets/image/profile/user-profile.png";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Button from "../../components/buttons/Button";
 import IconButton from "../../components/buttons/IconButton";
 import Modal from "../../components/modal";
@@ -250,9 +250,7 @@ const Profile = () => {
             <div className='flex justify-end mx-28'>
               <div className='grid grid-cols-2 gap-5'>
                 <Button onClick={goToBack}>انصراف</Button>
-                <Button filled={true}>
-                  ذخیره اطلاعات
-                </Button>
+                <Button filled={true}>ذخیره اطلاعات</Button>
               </div>
             </div>
           </div>

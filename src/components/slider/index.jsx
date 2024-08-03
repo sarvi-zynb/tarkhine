@@ -1,6 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import rectangle from "../../assets/image/common/Rectangle.png";
+import { useRef, useState } from "react";
 import rectangleSmall from "../../assets/image/common/RectangleSmall.png";
+import Button from "../buttons/Button";
 
 import {
   Navigation,
@@ -13,8 +15,6 @@ import {
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-import { useRef, useState } from "react";
-import Button from "../buttons/Button";
 
 const Slider = ({ title, images, btn, clicked }) => {
   const [_, setInit] = useState();
