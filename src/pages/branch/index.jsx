@@ -8,8 +8,8 @@ import { ToastContainer } from "react-toastify";
 import sliderImage from "../../assets/image/branch/Slider.png";
 import sliderImage2 from "../../assets/image/branch/slider2.png";
 import { useNavigate } from "react-router-dom";
-import { server } from '../../../data/server';
-
+import { server } from "../../../data/server";
+import Spinner from "./../../components/spinner";
 
 const sliderImages = [
   {
@@ -86,6 +86,7 @@ const Branch = () => {
 
   const [favoriteFoods, setFavoriteFoods] = useState([]);
   const [specialFoods, setSpecialFoods] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate()
 
@@ -93,6 +94,7 @@ const Branch = () => {
     axios
       .get(`${server}/foods`)
       .then((result) => {
+        setLoading(false);
         setFoods(result.data);
         result.data.map((item) => {
           if (item.id > 13 && item.id < 21) {
@@ -105,6 +107,7 @@ const Branch = () => {
     axios
       .get(`${server}/comments`)
       .then((result) => {
+        setLoading(false);
         setComments(result.data);
       })
       .catch((error) => console.log(error));
@@ -138,6 +141,10 @@ const Branch = () => {
         transition:Bounce
       />
       <Slider title={"طعم بی‌نظیر طبیعت!"} images={sliderImages} btn={true} />
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
       <MultiSlider title={"پیشنهاد ویژه"} cards={specialFoods} />
       <MultiSlider
         title={"غذا های محبوب"}
@@ -206,6 +213,9 @@ const Branch = () => {
         </div>
       </div>
 
+      {loading ? (
+        <Spinner />
+      ) : (
       <div className='my-10'>
         <p className='text-center my-3 font-bold text-base md:text-xl lg:text-2xl text-[#353535]'>
           نظرات کاربران

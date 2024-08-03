@@ -8,7 +8,7 @@ import Card from "../../components/MenuPage/card";
 import { ToastContainer } from "react-toastify";
 import sliderImage from '../../assets/image/menu/Slider.png'
 import { server } from "../../../data/server";
-
+import Spinner from "../../components/spinner";
 
 const sliderImages = [
   {
@@ -48,6 +48,7 @@ const Menu = () => {
   const [menuGheyrIrani, setMenuGheyrIrani] = useState([]);
   const [menuPizza, setMenuPizza] = useState([]);
   const [menuSandevich, setMenuSandevich] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigte = useNavigate()
 
@@ -55,6 +56,7 @@ const Menu = () => {
     axios
       .get(`${server}/foods`)
       .then((result) => {
+        setLoading(false);
         result.data.map((item) => {
           if (item.id < 13) {
             setMenuIrani((prev) => [...prev, item]);
@@ -123,6 +125,11 @@ const Menu = () => {
           <Searchbox />
         </div>
       </div>
+
+      {loading ? (
+        <Spinner />
+      ) : (
+        <>
       <div className='px-8 md:px-10 xl:px-28 mt-10'>
         <div className='flex justify-between'>
           <p className='text-[#353535] font-bold text-sm md:text-base lg:text-2xl'>غذاهای ایرانی</p>
