@@ -1,5 +1,6 @@
-import axios from "axios";
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
+import { toast } from "react-toastify";
+import { supabase } from "../client";
 
 export const AuthContext = createContext({
   isLogin: true,

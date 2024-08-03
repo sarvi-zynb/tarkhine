@@ -9,6 +9,7 @@ import Button from "../../buttons/Button";
 import VerificationInput from "react-verification-input";
 import { useShoppingCartContext } from "../../../contexts/ShoppingCart";
 import { useAuthContext } from "../../../contexts/Authentication";
+import { ToastContainer } from "react-toastify";
 
 const hamburgerMenu = [
   {
@@ -161,6 +162,19 @@ const Header = () => {
 
   return (
     <header className='shadow-md py-6 px-8 md:px-10 xl:px-28'>
+      <ToastContainer
+        position='bottom-left'
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme='light'
+        transition:Bounce
+      />
       <div className='flex justify-between justify-items-center items-center'>
         <button
           className='lg:hidden justify-self-start'
