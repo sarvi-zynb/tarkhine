@@ -1,5 +1,5 @@
-import aboutUS from "../../assets/image/aboutUS/aboutUS.png";
-import sliderImage from '../../assets/image/aboutUS/Slider.png'
+import aboutUS from "../../assets/image/about/about.png";
+import sliderImage from '../../assets/image/about/Slider.png'
 
 const AboutUS = () => {
   return (

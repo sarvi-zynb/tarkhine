@@ -3,6 +3,7 @@ import axios from "axios";
 import { useShoppingCartContext } from "../../contexts/ShoppingCart";
 import star from "../../assets/image/menu/star.png";
 import { server } from "../../../data/server";
+import Spinner from "../../components/spinner";
 
 const Cart = () => {
   const { cartItems } = useShoppingCartContext();
