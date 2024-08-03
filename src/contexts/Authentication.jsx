@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { supabase } from "../client";
+import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({
   token: false,
@@ -25,6 +26,15 @@ export const AuthProvider = ({ children }) => {
     password: "",
   });
   const [token, setToken] = useState(false);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (loginModal) {
+      navigate(loginPages == 1 ? "/register" : "/login", { replace: true });
+    } else {
+      navigate("/", { replace: true });
+    }
+  }, [loginModal, loginPages]);
 
   const handleOpenLoginModal = () => {
     setLoginModal(true);
@@ -89,7 +99,7 @@ export const AuthProvider = ({ children }) => {
 
   const signOut = async () => {
     let { error } = await supabase.auth.signOut();
-    setToken(false)
+    setToken(false);
     toast.error(error);
   };
 
