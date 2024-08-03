@@ -38,7 +38,7 @@ const MultiSlider = ({ cards, title, bgColor }) => {
             </div>
           ))}
         </div>
-        <div className='max-md:hidden absolute z-10 inset-0 self-center md:mt-20 lg:mt-36 md:mx-20 lg:mx-32'>
+        <div className='absolute z-10 inset-0 self-center md:mt-20 lg:mt-36 mx-5 md:mx-20 lg:mx-32'>
           <div className='flex justify-between'>
             <button onClick={handlePrev}>
               <i

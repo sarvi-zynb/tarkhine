@@ -255,17 +255,17 @@ const Branch = () => {
                 </div>
               ))}
             </div>
-            <div className='max-md:hidden absolute z-10 inset-0 self-center mt-24 mx-24'>
+            <div className='absolute z-10 inset-0 self-center mt-24 mx-5 md:mx-20 lg:mx-24'>
               <div className='flex justify-between'>
                 <button onClick={handlePrev}>
                   <i
-                    className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+                    className='iconsax md:text-xl lg:text-3xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
                     icon-name='chevron-right'
                   ></i>
                 </button>
                 <button onClick={handleNext}>
                   <i
-                    className='iconsax text-xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+                    className='iconsax md:text-xl lg:text-3xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
                     icon-name='chevron-left'
                   ></i>
                 </button>
