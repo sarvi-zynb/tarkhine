@@ -150,10 +150,10 @@ const ContactUS = () => {
       {showBranchPicModal && (
         <>
           <Modal close={handleCloseBranchPicModal} bg={modalBackgroundImg}>
-            <div className='grid grid-cols-6 gap-5 px-9 mt-60'>
+            <div className='grid grid-cols-6 gap-2 lg:gap-5 lg:px-9 mt-60'>
               {picture.map((item) => (
                 <button key={item.id} onClick={() => handleChoosePic(item.id)}>
-                  <img src={item.img} إ />
+                  <img src={item.img} />
                 </button>
               ))}
             </div>
