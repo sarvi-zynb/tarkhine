@@ -4,10 +4,12 @@ import { useEffect, useState } from "react";
 import Button from "../../components/buttons/Button";
 import IconButton from "../../components/buttons/IconButton";
 import Modal from "../../components/modal";
+import { useAuthContext } from "../../contexts/Authentication";
 
 const Profile = () => {
   const path = useLocation();
   const navigate = useNavigate();
+  const { signOut } = useAuthContext();
 
   const url = path.pathname.split("/");
 
@@ -271,7 +273,13 @@ const Profile = () => {
                 >
                   بازگشت
                 </Button>
-                <button className='w-full py-1 px-2 md:px-5 rounded-[4px] bg-[#FFF2F2] text-[#C30000]'>
+                <button
+                  className='w-full py-1 px-2 md:px-5 rounded-[4px] bg-[#FFF2F2] text-[#C30000]'
+                  onClick={() => {
+                    signOut();
+                    handleCloseLogoutModal();
+                  }}
+                >
                   خروج
                 </button>
               </div>

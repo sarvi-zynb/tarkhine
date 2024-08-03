@@ -34,8 +34,63 @@ export const AuthProvider = ({ children }) => {
   const handleCloseLoginModal = () => {
     setLoginModal(false);
     setLoginPages(1);
-    setTimerStatus(false);
-    setPhone("");
+  };
+
+  const signUpUser = async () => {
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: userData.email,
+        password: userData.password,
+        options: {
+          emailRedirectTo: "http://localhost:5173/branch",
+          data: {
+            full_name: userData.fullName,
+          },
+        },
+      });
+      console.log(data, error);
+      if (error == null) {
+        toast.info("Check your email for verification link");
+        setToken(true);
+        handleCloseLoginModal();
+      }
+    } catch (error) {
+      toast.info(error);
+    }
+  };
+
+  const signInUser = async () => {
+    try {
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: userData.email,
+        password: userData.password,
+      });
+      console.log(data, error);
+      if (error == null) {
+        handleCloseLoginModal();
+        setToken(data);
+        toast.success(`${data.user.user_metadata.full_name} خوش آمدید.`);
+      }
+    } catch (error) {
+      toast.error(error);
+    }
+  };
+
+  if (token) {
+    sessionStorage.setItem("token", JSON.stringify(token));
+  }
+
+  useEffect(() => {
+    if (sessionStorage.getItem("token")) {
+      let data = JSON.parse(sessionStorage.getItem("token"));
+      setToken(data);
+    }
+  }, []);
+
+  const signOut = async () => {
+    let { error } = await supabase.auth.signOut();
+    setToken(false)
+    toast.error(error);
   };
 
   // axios.defaults.headers.common["Content-Type"] = "application/json";
