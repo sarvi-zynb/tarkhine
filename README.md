@@ -8,4 +8,4 @@ npm run dev
  فایل json در render.com مستقر شده و ممکن است اطلاعات با سرعت کم لود شود یا با استفاده از vpn لود شود در صورت روشن کردن vpn ممکن است ایکون ها لود نشوند.</P>
 این سایت کاملا ریسپانسیو و از Tailwind css برای ui استفاده شده است.
 برای register , login در سایت از سرویس احراز هویت supabse استفاده شده
-<a href="[google.com](https://supabase.com/)">supabse</a>
+<a href="(https://supabase.com/)">supabse</a>
