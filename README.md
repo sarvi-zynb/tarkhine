@@ -1,8 +1,10 @@
 # React + Vite
+npm run dev
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+*Tarkhine is deployed on vercel*
+- https://tarkhine-theta.vercel.app/
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+ ترخینه یک سایت رستوران است که منوی غذا در فایل JSON ذخیره و با استفاده از json-server یک fake API ساخته شده.
+ فایل json در render.com مستقر شده و ممکن است اطلاعات با سرعت کم لود شود یا با استفاده از vpn لود شود در صورت روشن کردن vpn ممکن است ایکون ها لود نشوند.
+این سایت کاملا ریسپانسیو و از Tailwind css برای ui استفاده شده است.
+برای register , login در سایت از سرویس احراز هویت supabase استفاده شده
