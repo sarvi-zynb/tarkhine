@@ -7,7 +7,7 @@ import IconButton from "../../components/buttons/IconButton";
 import Card from "../../components/MenuPage/card";
 import { ToastContainer } from "react-toastify";
 import sliderImage from "../../assets/image/menu/Slider.png";
-import { server } from "../../../data/server";
+import { server2 } from "../../../data/server";
 import Spinner from "../../components/spinner";
 
 const sliderImages = [
@@ -54,7 +54,7 @@ const Menu = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/foods`)
+      .get(`${server2}/foods`)
       .then((result) => {
         setLoading(false);
         result.data.map((item) => {

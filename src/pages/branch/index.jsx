@@ -8,7 +8,7 @@ import sliderImage from "../../assets/image/branch/Slider.png";
 import sliderImage2 from "../../assets/image/branch/slider2.png";
 import star_rate from "../../assets/icons/Star-rate.png";
 import { useNavigate } from "react-router-dom";
-import { server } from "../../../data/server";
+import { server2 } from "../../../data/server";
 import Spinner from "./../../components/spinner";
 
 const sliderImages = [
@@ -90,7 +90,7 @@ const Branch = () => {
 
   useEffect(() => {
     axios
-      .get(`${server}/foods`)
+      .get(`${server2}/foods`)
       .then((result) => {
         setLoading(false);
         setFoods(result.data);
@@ -103,7 +103,7 @@ const Branch = () => {
       .catch((error) => console.log(error));
 
     axios
-      .get(`${server}/comments`)
+      .get(`${server2}/comments`)
       .then((result) => {
         setLoading(false);
         setComments(result.data);

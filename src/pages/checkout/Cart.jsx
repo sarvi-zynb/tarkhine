@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { useShoppingCartContext } from "../../contexts/ShoppingCart";
 import star from "../../assets/image/menu/star.png";
-import { server } from "../../../data/server";
-import Spinner from "../../components/spinner";
+import { server2 } from "../../../data/server";
 
 const Cart = () => {
   const { cartItems } = useShoppingCartContext();
@@ -17,7 +16,7 @@ const Cart = () => {
 
     useEffect(() => {
       axios
-        .get(`${server}/foods/${item.id}`)
+        .get(`${server2}/foods/${item.id}`)
         .then((result) => {
           setFood(result.data);
         })

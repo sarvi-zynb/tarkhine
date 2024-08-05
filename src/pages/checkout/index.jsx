@@ -11,7 +11,7 @@ import IconButton from "../../components/buttons/IconButton";
 import axios from "axios";
 import Modal from "../../components/modal";
 import { ToastContainer } from "react-toastify";
-import { server } from "../../../data/server";
+import { server2 } from "../../../data/server";
 
 const Checkout = () => {
   const [isEmpty, setIsEmpty] = useState(false);
@@ -51,7 +51,7 @@ const Checkout = () => {
 
     useEffect(() => {
       axios
-        .get(`${server}/foods/${item.id}`)
+        .get(`${server2}/foods/${item.id}`)
         .then((result) => {
           setFood(result.data);
         })
