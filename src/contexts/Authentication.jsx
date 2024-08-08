@@ -28,12 +28,14 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(true);
   const navigate = useNavigate();
 
+  
   useEffect(() => {
-    if (loginModal) {
-      navigate(loginPages == 1 ? "/register" : "/login", { replace: true });
-    } else {
-      navigate("/", { replace: true });
-    }
+    // if (loginModal) {
+    //   navigate(loginPages == 1 ? "/register" : "/login", { replace: true });
+    // } 
+    // else {
+    //   navigate('/', {replace:true});
+    // }
   }, [loginModal, loginPages]);
 
   const handleOpenLoginModal = () => {
@@ -44,6 +46,7 @@ export const AuthProvider = ({ children }) => {
   const handleCloseLoginModal = () => {
     setLoginModal(false);
     setLoginPages(1);
+
   };
 
   const signUpUser = async () => {
@@ -87,14 +90,14 @@ export const AuthProvider = ({ children }) => {
   };
 
   if (token) {
-    sessionStorage.setItem("token", JSON.stringify(token));
+    // sessionStorage.setItem("token", JSON.stringify(token));
   }
 
   useEffect(() => {
-    if (sessionStorage.getItem("token")) {
-      let data = JSON.parse(sessionStorage.getItem("token"));
-      setToken(data);
-    }
+    // if (sessionStorage.getItem("token")) {
+    //   let data = JSON.parse(sessionStorage.getItem("token"));
+    //   setToken(data);
+    // }
   }, []);
 
   const signOut = async () => {
