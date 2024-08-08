@@ -41,16 +41,38 @@ const MultiSlider = ({ cards, title, bgColor }) => {
         <div className='absolute z-10 inset-0 self-center md:mt-20 lg:mt-36 mx-5 md:mx-20 lg:mx-32'>
           <div className='flex justify-between'>
             <button onClick={handlePrev}>
-              <i
-                className='iconsax md:text-xl lg:text-3xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd] hover:font-bold'
-                icon-name='chevron-right'
-              ></i>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                className='w-5 md:w-7 xl:w-9 border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+              >
+                <path
+                  stroke='#757575'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-miterlimit='10'
+                  stroke-width='1.5'
+                  d='M8.91 19.92l6.52-6.52c.77-.77.77-2.03 0-2.8L8.91 4.08'
+                ></path>
+              </svg>
             </button>
             <button onClick={handleNext}>
-              <i
-                className='iconsax md:text-xl lg:text-3xl text-[#757575] border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd] hover:font-bold'
-                icon-name='chevron-left'
-              ></i>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                className='w-5 md:w-7 xl:w-9 border border-[#CBCBCB] p-0.5 rounded-lg bg-white transition duration-300 hover:bg-[#ddd]'
+              >
+                <path
+                  stroke='#757575'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                  stroke-miterlimit='10'
+                  stroke-width='1.5'
+                  d='M15 19.92L8.48 13.4c-.77-.77-.77-2.03 0-2.8L15 4.08'
+                ></path>
+              </svg>
             </button>
           </div>
         </div>

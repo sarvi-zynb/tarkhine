@@ -57,11 +57,7 @@ const Branches = ({ openModal }) => {
                 </p>
                 <div className='hidden group-hover:flex justify-center md:mt-10'>
                   <div className='absolute bottom-4'>
-                    <Button
-                      onClick={openModal}
-                      icon={"chevron-left"}
-                      filled={false}
-                    >
+                    <Button onClick={openModal} filled={false}>
                       صفحه شعبه
                     </Button>
                   </div>

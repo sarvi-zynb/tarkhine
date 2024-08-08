@@ -1,4 +1,4 @@
-const Modal = ({ close, title, children, bg, back }) => {
+const Modal = ({ close, title, children, bg }) => {
   return (
     <>
       <div
@@ -14,16 +14,6 @@ const Modal = ({ close, title, children, bg, back }) => {
             className='border-0 rounded-lg p-5 shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'
           >
             <div className='flex justify-between items-start my-1'>
-              <div>
-                {back && (
-                  <button className='text-2xl' onClick={back}>
-                     <i
-                    className='iconsax'
-                    icon-name='chevron-right'
-                  ></i>
-                  </button>
-                )}
-              </div>
               <p className='text-[#353535] font-bold text-sm md:text-xl'>{title}</p>
               <button className='md:text-2xl' onClick={close}>
                 <i className='fas fa-times'></i>

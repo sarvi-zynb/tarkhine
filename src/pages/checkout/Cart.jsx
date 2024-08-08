@@ -31,10 +31,23 @@ const Cart = () => {
       <div className='flex h-40 border border-[#CBCBCB] rounded-md'>
         <img src={food.image} />
         <div className='grid p-3 pr-5 w-full'>
-          <div className='flex justify-between text-[#353535]'>
+          <div className='flex justify-between items-start text-[#353535]'>
             <p className='font-semibold text-xl'>{food.name}</p>
             <button onClick={() => deleteFromCart(item.id)}>
-              <i className='iconsax text-xl' icon-name='trash'></i>
+              <svg
+                xmlns='http://www.w3.org/2000/svg'
+                viewBox='0 0 24 24'
+                fill='none'
+                className='w-5'
+              >
+                <path
+                  d='M21 5.98c-3.33-.33-6.68-.5-10.02-.5-1.98 0-3.96.1-5.94.3L3 5.98M8.5 4.97l.22-1.31C8.88 2.71 9 2 10.69 2h2.62c1.69 0 1.82.75 1.97 1.67l.22 1.3M18.85 9.14l-.65 10.07C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5h3.33M9.5 12.5h5'
+                  stroke='#353535'
+                  stroke-width='1.5'
+                  stroke-linecap='round'
+                  stroke-linejoin='round'
+                ></path>
+              </svg>
             </button>
           </div>
           <div className='flex justify-between items-center'>
@@ -56,7 +69,21 @@ const Cart = () => {
                 <span className='text-sm'>{item.qty}</span>
                 {item.qty == 1 ? (
                   <button onClick={() => deleteFromCart(item.id)}>
-                    <i className='iconsax text-sm' icon-name='trash'></i>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      width='16'
+                      height='16'
+                      viewBox='0 0 24 24'
+                      fill='none'
+                    >
+                      <path
+                        d='M21 5.98c-3.33-.33-6.68-.5-10.02-.5-1.98 0-3.96.1-5.94.3L3 5.98M8.5 4.97l.22-1.31C8.88 2.71 9 2 10.69 2h2.62c1.69 0 1.82.75 1.97 1.67l.22 1.3M18.85 9.14l-.65 10.07C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5h3.33M9.5 12.5h5'
+                        stroke='#417F56'
+                        stroke-width='1.5'
+                        stroke-linecap='round'
+                        stroke-linejoin='round'
+                      ></path>
+                    </svg>
                   </button>
                 ) : (
                   <button onClick={() => removeItemFromCart(item.id)}>-</button>
