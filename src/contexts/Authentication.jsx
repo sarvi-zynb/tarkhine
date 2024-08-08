@@ -4,7 +4,7 @@ import { supabase } from "../client";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext({
-  token: false,
+  token: true,
   loginModal: false,
   loginPages: 1,
   setLoginPages: () => {},
@@ -25,7 +25,7 @@ export const AuthProvider = ({ children }) => {
     email: "",
     password: "",
   });
-  const [token, setToken] = useState(false);
+  const [token, setToken] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
