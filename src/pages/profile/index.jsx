@@ -230,10 +230,10 @@ const Profile = () => {
         </div>
 
         {path.pathname == "/profile" && (
-          <div className='w-3/4 border border-[#CBCBCB] rounded-md p-5'>
-            <p className='text-[353535] font-bold text-xl mb-3'>پروفایل</p>
+          <div className='w-full border border-[#CBCBCB] rounded-md p-3 md:p-5'>
+            <p className='text-[353535] font-bold text-base md:text-xl mb-3'>پروفایل</p>
             <hr />
-            <div className='grid grid-cols-2 gap-5 mx-28 my-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 md:mx-5 xl:mx-28 my-5 md:my-10'>
               <input
                 placeholder='نام'
                 className='border border-[#CBCBCB] p-2 rounded-[4px]'
@@ -306,12 +306,12 @@ const Profile = () => {
         )}
 
         {path.pathname == "/profile/edit" && (
-          <div className='w-3/4 h-[494px] border border-[#CBCBCB] rounded-md p-5'>
-            <p className='text-[353535] font-bold text-xl mb-3'>
+          <div className='w-full border border-[#CBCBCB] rounded-md p-5'>
+            <p className='text-[353535] font-bold text-base md:text-xl mb-3'>
               ویرایش اطلاعات شخصی
             </p>
             <hr />
-            <div className='grid grid-cols-2 gap-5 mx-28 my-10'>
+            <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 md:mx-5 xl:mx-28 my-5 md:my-10'>
               <input
                 placeholder='نام'
                 className='border border-[#CBCBCB] p-2 rounded-[4px]'
@@ -349,8 +349,8 @@ const Profile = () => {
                 value={"zynb"}
               />
             </div>
-            <div className='flex justify-end mx-28'>
-              <div className='grid grid-cols-2 gap-5'>
+            <div className='flex justify-center md:mx-5 xl:mx-28'>
+              <div className='max-sm:w-full grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-5'>
                 <Button onClick={goToBack}>انصراف</Button>
                 <Button filled={true}>ذخیره اطلاعات</Button>
               </div>
