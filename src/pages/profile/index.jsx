@@ -148,8 +148,8 @@ const Profile = () => {
           className='mx-1 w-5'
         >
           <path
-            stroke={activeIndex == 3 ? "#417F56" : "#353535"}
-            className='group-hover:stroke-[#417F56]'
+            stroke={activeIndex == 3 ? "#C30000" : "#353535"}
+            className='group-hover:stroke-[#C30000]'
             stroke-linecap='round'
             stroke-linejoin='round'
             stroke-width='1.5'
