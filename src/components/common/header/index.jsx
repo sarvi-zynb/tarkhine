@@ -190,14 +190,15 @@ const Header = () => {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='none'
-                className={`w-4 stroke-[${
-                  location.pathname == "/menu" ? "#417F56" : "#353535"
-                }] group-hover:stroke-[#417F56]`}
+                className="w-4"
               >
                 <path
                   d='m21.93 6.76-3.37 13.53A2.228 2.228 0 0 1 16.38 22H3.24c-1.51 0-2.59-1.48-2.14-2.93L5.31 5.55a2.25 2.25 0 0 1 2.14-1.59h12.3c.95 0 1.74.58 2.07 1.38.19.43.23.92.11 1.42Z'
+                  stroke={location.pathname == "/menu" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-miterlimit='10'
+                className='group-hover:stroke-[#417F56]'
+
                 ></path>
                 <path
                   d='M16 22h4.78c1.29 0 2.3-1.09 2.21-2.38L22 6M9.68 6.38l1.04-4.32M16.38 6.39l.94-4.34M7.7 12h8M6.7 16h8'
@@ -222,15 +223,15 @@ const Header = () => {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='none'
-                className={`w-4 stroke-[${
-                  location.pathname == "/branch" ? "#417F56" : "#353535"
-                }] group-hover:stroke-[#417F56]`}
+                className='w-4'
               >
                 <path
                   d='m9.02 2.84-5.39 4.2C2.73 7.74 2 9.23 2 10.36v7.41c0 2.32 1.89 4.22 4.21 4.22h11.58c2.32 0 4.21-1.9 4.21-4.21V10.5c0-1.21-.81-2.76-1.8-3.45l-6.18-4.33c-1.4-.98-3.65-.93-5 .12ZM12 17.99v-3'
+                  stroke={location.pathname == "/branch" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-linecap='round'
                   stroke-linejoin='round'
+                  className='group-hover:stroke-[#417F56]'
                 ></path>
               </svg>
               <p className='text-xs md:text-base mr-1'>شعبه</p>
@@ -248,15 +249,15 @@ const Header = () => {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='none'
-                className={`w-4 stroke-[${
-                  location.pathname == "/about" ? "#417F56" : "#353535"
-                }] group-hover:stroke-[#417F56]`}
+                className='w-4'
               >
                 <path
                   d='M9.16 10.87c-.1-.01-.22-.01-.33 0a4.42 4.42 0 0 1-4.27-4.43C4.56 3.99 6.54 2 9 2a4.435 4.435 0 0 1 .16 8.87ZM16.41 4c1.94 0 3.5 1.57 3.5 3.5 0 1.89-1.5 3.43-3.37 3.5a1.13 1.13 0 0 0-.26 0M4.16 14.56c-2.42 1.62-2.42 4.26 0 5.87 2.75 1.84 7.26 1.84 10.01 0 2.42-1.62 2.42-4.26 0-5.87-2.74-1.83-7.25-1.83-10.01 0ZM18.34 20c.72-.15 1.4-.44 1.96-.87 1.56-1.17 1.56-3.1 0-4.27-.55-.42-1.22-.7-1.93-.86'
+                  stroke={location.pathname == "/about" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-linecap='round'
                   stroke-linejoin='round'
+                  className='group-hover:stroke-[#417F56]'
                 ></path>
               </svg>
               <p className='text-xs md:text-base mr-1'>درباره ما</p>
@@ -274,20 +275,22 @@ const Header = () => {
                 xmlns='http://www.w3.org/2000/svg'
                 viewBox='0 0 24 24'
                 fill='none'
-                className={`w-4 stroke-[${
-                  location.pathname == "/contact" ? "#417F56" : "#353535"
-                }] group-hover:stroke-[#417F56]`}
+                className='w-4'
               >
                 <path
                   d='M21.97 18.33c0 .36-.08.73-.25 1.09-.17.36-.39.7-.68 1.02-.49.54-1.03.93-1.64 1.18-.6.25-1.25.38-1.95.38-1.02 0-2.11-.24-3.26-.73s-2.3-1.15-3.44-1.98a28.75 28.75 0 0 1-3.28-2.8 28.414 28.414 0 0 1-2.79-3.27c-.82-1.14-1.48-2.28-1.96-3.41C2.24 8.67 2 7.58 2 6.54c0-.68.12-1.33.36-1.93.24-.61.62-1.17 1.15-1.67C4.15 2.31 4.85 2 5.59 2c.28 0 .56.06.81.18.26.12.49.3.67.56l2.32 3.27c.18.25.31.48.4.7.09.21.14.42.14.61 0 .24-.07.48-.21.71-.13.23-.32.47-.56.71l-.76.79c-.11.11-.16.24-.16.4 0 .08.01.15.03.23.03.08.06.14.08.2.18.33.49.76.93 1.28.45.52.93 1.05 1.45 1.58.54.53 1.06 1.02 1.59 1.47.52.44.95.74 1.29.92.05.02.11.05.18.08.08.03.16.04.25.04.17 0 .3-.06.41-.17l.76-.75c.25-.25.49-.44.72-.56.23-.14.46-.21.71-.21.19 0 .39.04.61.13.22.09.45.22.7.39l3.31 2.35c.26.18.44.39.55.64.1.25.16.5.16.78Z'
+                  stroke={location.pathname == "/contact" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-miterlimit='10'
+                  className='group-hover:stroke-[#417F56]'
                 ></path>
                 <path
                   d='M18.5 9c0-.6-.47-1.52-1.17-2.27-.64-.69-1.49-1.23-2.33-1.23M22 9c0-3.87-3.13-7-7-7'
+                  stroke={location.pathname == "/contact" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-linecap='round'
                   stroke-linejoin='round'
+                  className='group-hover:stroke-[#417F56]'
                 ></path>
               </svg>
               <p className='text-xs md:text-base mr-1'>تماس با ما</p>
@@ -600,7 +603,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <hr />
-                <div className='group flex items-center py-1 md:py-2 hover:font-bold'>
+                <div className='group flex items-center py-1 md:py-2'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -631,7 +634,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <hr />
-                <div className='group flex items-center py-1 md:py-2 hover:font-bold'>
+                <div className='group flex items-center py-1 md:py-2'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -654,7 +657,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <hr />
-                <div className='group flex items-center py-1 md:py-2 hover:font-bold'>
+                <div className='group flex items-center py-1 md:py-2'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
@@ -680,7 +683,7 @@ const Header = () => {
                   </Link>
                 </div>
                 <hr />
-                <div className='group flex items-center py-1 md:py-2 hover:font-bold'>
+                <div className='group flex items-center py-1 md:py-2'>
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'

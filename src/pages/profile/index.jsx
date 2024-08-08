@@ -45,15 +45,15 @@ const Profile = () => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
           fill='none'
-          className={`mx-1 w-5 stroke-[${
-            activeIndex == 1 ? "#417F56" : "#353535"
-          }] group-hover:stroke-[#417F56]`}
+          className='mx-1 w-5'
         >
           <path
             d='M12 12a5 5 0 1 0 0-10 5 5 0 0 0 0 10ZM20.59 22c0-3.87-3.85-7-8.59-7s-8.59 3.13-8.59 7'
+            stroke={activeIndex == 1 ? "#417F56" : "#353535"}
             stroke-width='1.5'
             stroke-linecap='round'
             stroke-linejoin='round'
+            className='group-hover:stroke-[#417F56]'
           ></path>
         </svg>
       ),
@@ -67,21 +67,23 @@ const Profile = () => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
           fill='none'
-          className={`mx-1 w-5 stroke-[${
-            activeIndex == 2 ? "#417F56" : "#353535"
-          }] group-hover:stroke-[#417F56]`}
+          className='mx-1 w-5'
         >
           <path
             d='M13 9H7M22 10.97v2.06c0 .55-.44 1-1 1.02h-1.96c-1.08 0-2.07-.79-2.16-1.87-.06-.63.18-1.22.6-1.63.37-.38.88-.6 1.44-.6H21c.56.02 1 .47 1 1.02Z'
+            stroke={activeIndex == 2 ? "#417F56" : "#353535"}
             stroke-width='1.5'
             stroke-linecap='round'
             stroke-linejoin='round'
+            className='group-hover:stroke-[#417F56]'
           ></path>
           <path
             d='M17.48 10.55c-.42.41-.66 1-.6 1.63.09 1.08 1.08 1.87 2.16 1.87H21v1.45c0 3-2 5-5 5H7c-3 0-5-2-5-5v-7c0-2.72 1.64-4.62 4.19-4.94.26-.04.53-.06.81-.06h9c.26 0 .51.01.75.05C19.33 3.85 21 5.76 21 8.5v1.45h-2.08c-.56 0-1.07.22-1.44.6Z'
+            stroke={activeIndex == 2 ? "#417F56" : "#353535"}
             stroke-width='1.5'
             stroke-linecap='round'
             stroke-linejoin='round'
+            className='group-hover:stroke-[#417F56]'
           ></path>
         </svg>
       ),
@@ -95,15 +97,15 @@ const Profile = () => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
           fill='none'
-          className={`mx-1 w-5 stroke-[${
-            activeIndex == 3 ? "#417F56" : "#353535"
-          }] group-hover:stroke-[#417F56]`}
+          className='mx-1 w-5'
         >
           <path
             d='M12.62 20.81c-.34.12-.9.12-1.24 0C8.48 19.82 2 15.69 2 8.69 2 5.6 4.49 3.1 7.56 3.1c1.82 0 3.43.88 4.44 2.24a5.53 5.53 0 0 1 4.44-2.24C19.51 3.1 22 5.6 22 8.69c0 7-6.48 11.13-9.38 12.12Z'
+            stroke={activeIndex == 3 ? "#417F56" : "#353535"}
             stroke-width='1.5'
             stroke-linecap='round'
             stroke-linejoin='round'
+            className='group-hover:stroke-[#417F56]'
           ></path>
         </svg>
       ),
@@ -117,17 +119,19 @@ const Profile = () => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
           fill='none'
-          className={`mx-1 w-5 stroke-[${
-            activeIndex == 4 ? "#417F56" : "#353535"
-          }] group-hover:stroke-[#417F56]`}
+          className='mx-1 w-5'
         >
           <path
             d='M12 13.43a3.12 3.12 0 1 0 0-6.24 3.12 3.12 0 0 0 0 6.24Z'
+            stroke={activeIndex == 3 ? "#417F56" : "#353535"}
             stroke-width='1.5'
+            className='group-hover:stroke-[#417F56]'
           ></path>
           <path
             d='M3.62 8.49c1.97-8.66 14.8-8.65 16.76.01 1.15 5.08-2.01 9.38-4.78 12.04a5.193 5.193 0 0 1-7.21 0c-2.76-2.66-5.92-6.97-4.77-12.05Z'
+            stroke={activeIndex == 3 ? "#417F56" : "#353535"}
             stroke-width='1.5'
+            className='group-hover:stroke-[#417F56]'
           ></path>
         </svg>
       ),
@@ -141,11 +145,11 @@ const Profile = () => {
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 24 24'
           fill='none'
-          className={`mx-1 w-5 stroke-[${
-            activeIndex == 5 ? "#C30000" : "#353535"
-          }] group-hover:stroke-[#C30000]`}
+          className='mx-1 w-5'
         >
           <path
+            stroke={activeIndex == 3 ? "#417F56" : "#353535"}
+            className='group-hover:stroke-[#417F56]'
             stroke-linecap='round'
             stroke-linejoin='round'
             stroke-width='1.5'
@@ -231,7 +235,9 @@ const Profile = () => {
 
         {path.pathname == "/profile" && (
           <div className='w-full border border-[#CBCBCB] rounded-md p-3 md:p-5'>
-            <p className='text-[353535] font-bold text-base md:text-xl mb-3'>پروفایل</p>
+            <p className='text-[353535] font-bold text-base md:text-xl mb-3'>
+              پروفایل
+            </p>
             <hr />
             <div className='grid grid-cols-1 sm:grid-cols-2 gap-4 md:mx-5 xl:mx-28 my-5 md:my-10'>
               <input
@@ -273,13 +279,13 @@ const Profile = () => {
             </div>
             <div className='flex justify-center'>
               <IconButton
-              className='group max-sm:w-full'
+                className='group max-sm:w-full'
                 icon={
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
                     viewBox='0 0 24 24'
                     fill='none'
-                    className="w-3 md:w-5 ml-1 stroke-[#417F56] group-hover:stroke-[#FFF] transition duration-500"
+                    className='w-3 md:w-5 ml-1 stroke-[#417F56] group-hover:stroke-[#FFF] transition duration-500'
                   >
                     <path
                       d='m13.26 3.6-8.21 8.69c-.31.33-.61.98-.67 1.43l-.37 3.24c-.13 1.17.71 1.97 1.87 1.77l3.22-.55c.45-.08 1.08-.41 1.39-.75l8.21-8.69c1.42-1.5 2.06-3.21-.15-5.3-2.2-2.07-3.87-1.34-5.29.16Z'
