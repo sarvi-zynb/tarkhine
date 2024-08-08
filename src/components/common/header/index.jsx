@@ -202,10 +202,12 @@ const Header = () => {
                 ></path>
                 <path
                   d='M16 22h4.78c1.29 0 2.3-1.09 2.21-2.38L22 6M9.68 6.38l1.04-4.32M16.38 6.39l.94-4.34M7.7 12h8M6.7 16h8'
+                  stroke={location.pathname == "/menu" ? "#417F56" : "#353535"}
                   stroke-width='1.5'
                   stroke-miterlimit='10'
                   stroke-linecap='round'
                   stroke-linejoin='round'
+                  className='group-hover:stroke-[#417F56]'
                 ></path>
               </svg>
               <p className='text-xs md:text-base mr-1'>منو</p>
